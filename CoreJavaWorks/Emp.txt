@@ -1,0 +1,12 @@
+Empid: 102
+Emp name: b
+Emp salary: 1000.0
+Empid: 101
+Emp name: a
+Emp salary: 1100.0
+Empid: 102
+Emp name: b
+Emp salary: 1000.0
+Empid: 104
+Emp name: c
+Emp salary: 11111.0
