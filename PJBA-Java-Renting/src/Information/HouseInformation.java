@@ -12,16 +12,18 @@ public class HouseInformation implements Serializable {
 	private boolean rentOrSell ;
 	private boolean isBroker;
 	private boolean AppartmentOrHouse;
-	private RoomType roomType;
-	private double cost;
+	private String roomType;
+	private int cost;
 	private Amenities amenities;
 	private boolean familyOrBachelors;
 	private OwnerInformation owner;
-	private String ownerId;
+	private int ownerId;
 
+	public HouseInformation() {
+	}
+	
 	public HouseInformation(String houseName, String houseAddress, boolean rentOrSell, boolean isBroker,
-			boolean appartmentOrHouse, RoomType roomType, double cost, Amenities amenities, boolean familyOrBachelors,
-			OwnerInformation owner, String ownerId) {
+			boolean appartmentOrHouse, String roomType, int cost, boolean familyOrBachelors) {
 		super();
 		this.houseName = houseName;
 		this.houseAddress = houseAddress;
@@ -30,10 +32,10 @@ public class HouseInformation implements Serializable {
 		AppartmentOrHouse = appartmentOrHouse;
 		this.roomType = roomType;
 		this.cost = cost;
-		this.amenities = amenities;
+		//this.amenities = amenities;
 		this.familyOrBachelors = familyOrBachelors;
-		this.owner = owner;
-		this.ownerId = ownerId;
+		//this.owner = owner;
+		//this.ownerId = ownerId; 
 	}
 
 	public String getHouseName() {
@@ -66,16 +68,16 @@ public class HouseInformation implements Serializable {
 	public void setAppartmentOrHouse(boolean appartmentOrHouse) {
 		AppartmentOrHouse = appartmentOrHouse;
 	}
-	public RoomType getRoomType() {
+	public String getRoomType() {
 		return roomType;
 	}
-	public void setRoomType(RoomType roomType) {
+	public void setRoomType(String roomType) {
 		this.roomType = roomType;
 	}
-	public double getCost() {
+	public int getCost() {
 		return cost;
 	}
-	public void setCost(double cost) {
+	public void setCost(int cost) {
 		this.cost = cost;
 	}
 	public Amenities getAmenities() {

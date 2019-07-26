@@ -1,4 +1,4 @@
-package DatabaseConnection;
+package Information;
 
 public class Credentials {
 	private String username;

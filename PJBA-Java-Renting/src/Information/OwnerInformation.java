@@ -9,20 +9,24 @@ public class OwnerInformation extends PersonalInformation implements Serializabl
 	private static final long serialVersionUID = 1L;
 	private String bankAccountNo;
 	private String bankBranch;
-	private String id;
-	public OwnerInformation(String id, String name, String emailId, String address, String phoneNo){
+	//private String id;
+	public OwnerInformation() {
+	}
+	public OwnerInformation(String name, String emailId, String address, String phoneNo, String bankBranch, String bankAccountNo){
 		setName(name);
 		setEmailId(emailId);
 		setAddress(address);
-		setId(id);
+		//setId(id);
 		setPhoneNo(phoneNo);
+		setBankBranch(bankBranch);
+		setBankAccountNo(bankAccountNo);
 	}
-	private void setId(String id) {
+	/*private void setId(String id) {
 		this.id = id;
 	}
 	public String getId() {
 		return this.id;
-	}
+	}*/
 	public String getBankAccountNo() {
 		return bankAccountNo;
 	}
