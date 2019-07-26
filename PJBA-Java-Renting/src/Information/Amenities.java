@@ -11,5 +11,8 @@ public enum Amenities {
 	SWIMMING_POOL,
 	GYM,
 	AC,
-	WIFI
+	WIFI,
+	LIGHTS,
+	GEYSER,
+	FANS
 }
