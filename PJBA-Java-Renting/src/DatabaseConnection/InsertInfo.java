@@ -1,12 +1,12 @@
 package DatabaseConnection;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 import Information.Credentials;
-import Information.HouseInformation;
-import Information.OwnerInformation;
-import Information.RoomType;
+//import Information.HouseInformation;
+//import Information.OwnerInformation;
+//import Information.RoomType;
 
 public class InsertInfo {
 	public static void main(String[] args) {
@@ -22,7 +22,8 @@ public class InsertInfo {
 		//System.out.println(dao.insertHouseDetails(house, 1)?"Inserted":"Not inserted");
 		//HouseInformation house2 = new HouseInformation();
 		//System.out.println(dao.getHouseDetails("Marathalli").isBroker());
-		System.out.println(dao.getAllHouseDetailsOfParticulaOwner(1).get(1).getHouseName());
+		//System.out.println(dao.getAllHouseDetailsOfParticulaOwner(1).get(1).getHouseName());
+		//System.out.println(dao.getOnwerIDFromHouse("anurag"));
 		
 	}
 }

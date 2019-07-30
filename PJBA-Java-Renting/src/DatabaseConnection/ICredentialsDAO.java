@@ -14,4 +14,5 @@ public interface ICredentialsDAO {
 	public boolean insertHouseDetails(HouseInformation house, int owner_id);
 	public HouseInformation getHouseDetails(String address);
 	public List<HouseInformation> getAllHouseDetailsOfParticulaOwner(int owner_id);
+	public int getOnwerIDFromHouse(String username);
 }

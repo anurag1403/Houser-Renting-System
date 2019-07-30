@@ -1,6 +1,5 @@
 package DatabaseConnection;
 
-import java.security.acl.Owner;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -183,6 +182,26 @@ public class CredentialsDAO implements ICredentialsDAO{
 		}
 		
 		return null;
+	}
+
+	@Override
+	public int getOnwerIDFromHouse(String username) {
+		String sql = "select id from owner where username = ?";
+		GetConnection gc = null;
+		int id;
+		try {
+			gc = new GetConnection();
+			gc.ps = GetConnection.getMysqlConnection().prepareStatement(sql);
+			gc.ps.setString(1, username);
+			gc.rs = gc.ps.executeQuery();
+			gc.rs.next();
+			id = gc.rs.getInt("id");
+			return id;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
 	}
 	
 	
