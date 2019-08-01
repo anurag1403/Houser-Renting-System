@@ -26,7 +26,7 @@ public class AllHouses extends HttpServlet {
 		
 		
 		CredentialsDAO c=new CredentialsDAO();
-		//System.out.println(c.getAllHouseDetailsOfParticulaOwner(uname,phone_no));
+		//System.out.println(c.getAllHouseDetailsOfParticulaOwner(uname));
 	}
 
 	

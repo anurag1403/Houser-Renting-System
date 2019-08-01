@@ -1,12 +1,6 @@
 package DatabaseConnection;
 
-//import java.util.ArrayList;
-//import java.util.List;
-
 import Information.Credentials;
-//import Information.HouseInformation;
-//import Information.OwnerInformation;
-//import Information.RoomType;
 
 public class InsertInfo {
 	public static void main(String[] args) {
