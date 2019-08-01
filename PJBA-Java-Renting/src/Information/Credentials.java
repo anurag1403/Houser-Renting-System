@@ -1,13 +1,20 @@
 package Information;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "credentials")
 public class Credentials {
+	@Id
 	private String username;
 	private String password;
 	
 	public Credentials() {
 	}
 	public Credentials(String username, String password) {
-		super();
+		//super();
 		this.username = username;
 		this.password = password;
 	}
