@@ -9,8 +9,8 @@ import Information.OwnerInformation;
 
 public class InsertData {
 	public static void main(String[] args) {
-		Credentials credentials = new Credentials();
-		credentials.setUsername("udit1");
+		/*ICredentials credentials = new Credentials();
+		credentials.setUsername("anurag");
 		credentials.setPassword("abcd");
 		ICredentialsDAO dao = new CredentialsDAO();
 		dao.insertCredentials(credentials);
@@ -34,6 +34,9 @@ public class InsertData {
 		house.setFamilyOrBachelors(true);
 		house.setOwner(owner);
 		dao.insertHouseDetails(house);
-		System.out.println("hello");
+		System.out.println("hello");*/
+		//dao.getCredentials("udit1");
+		ICredentialsDAO dao = new CredentialsDAO();
+		System.out.println(dao.getOwnerDetails("udit1").getName());	
 	}
 }

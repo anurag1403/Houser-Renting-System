@@ -43,6 +43,18 @@ public class OwnerInformation{
 		this.bankBranch = bankBranch;
 		this.credentials = credentials;
 	}
+	
+	
+	public OwnerInformation(  String name, String emailId, String address, String phoneNo, String bankAccountNo,
+			String bankBranch, Credentials credentials) {
+		this.name = name;
+		this.emailId = emailId;
+		this.address = address;
+		this.phoneNo = phoneNo;
+		this.bankAccountNo = bankAccountNo;
+		this.bankBranch = bankBranch;
+		this.credentials = credentials;
+	}
 	public int getId() {
 		return owner_id;
 	}

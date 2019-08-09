@@ -1,8 +1,14 @@
 package DatabaseConnection;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Tuple;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,7 +22,7 @@ import Information.OwnerInformation;
 
 public class CredentialsDAO implements ICredentialsDAO{
 
-	private org.apache.log4j.Logger log = null;
+	//private org.apache.log4j.Logger log = null;
 	public CredentialsDAO() {
 		// log = org.apache.log4j.Logger.getLogger(CredentialsDAO.class.getName());
 	}
@@ -34,29 +40,21 @@ public class CredentialsDAO implements ICredentialsDAO{
 
 	@Override
 	public String getCredentials(String username) {
-		String sql = "select password from credentials where username = ?";
-		GetConnection gc = null;
-		try {
-			gc = new GetConnection();
-			gc.ps = GetConnection.getMysqlConnection().prepareStatement(sql);
-			gc.ps.setString(1, username);
-			gc.rs = gc.ps.executeQuery();
-			String password = null;
-			if(gc.rs.next()) {
-				password = gc.rs.getString("password");
-			}
-			return password;
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<String> query = criteriaBuilder.createQuery(String.class);
+        Root<Credentials> root = query.from(Credentials.class);
+        Predicate employeeIdPredicate = criteriaBuilder.equal(root.get("username"), username);
+        query.select(root.get("password")).where(employeeIdPredicate);
+        List<String> result = session.createQuery(query).getResultList();
+        
+        return result.get(0);
+		
 	}
 
 	@Override
 	public void insertOwnerDetails(OwnerInformation owner) {
-		
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -68,7 +66,7 @@ public class CredentialsDAO implements ICredentialsDAO{
 
 	@Override
 	public OwnerInformation getOwnerDetails(String username) {
-		String sql = "select name, email,address,phone_no,bank_account_no,bank_branch from owner where username = ?";
+		/*String sql = "select name, email,address,phone_no,bank_account_no,bank_branch from owner where username = ?";
 		GetConnection gc = null;
 		try {
 			gc = new GetConnection();
@@ -88,7 +86,26 @@ public class CredentialsDAO implements ICredentialsDAO{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return null;*/
+		
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> query = criteriaBuilder.createQuery(Object[].class);
+        Root<OwnerInformation> root = query.from(OwnerInformation.class);
+        Predicate employeeIdPredicate = criteriaBuilder.equal(root.get("credentials").get("username"), username);
+        query.multiselect(root.get("name"),root.get("emailId"),root.get("address"),root.get("phoneNo"),root.get("bankAccountNo"),root.get("bankBranch"),root.get("credentials")).where(employeeIdPredicate);
+        
+        List<Object[]> result = session.createQuery(query).getResultList();
+        OwnerInformation owner = new OwnerInformation();
+        owner.setName((String)result.get(0)[0]);
+        owner.setEmailId((String)result.get(0)[1]);
+        owner.setAddress((String)result.get(0)[2]);
+        owner.setPhoneNo((String)result.get(0)[3]);
+        owner.setBankAccountNo((String)result.get(0)[4]);
+        owner.setBankBranch((String)result.get(0)[5]);
+        owner.setCredentials((Credentials)result.get(0)[6]);
+        return owner;
 	}
 
 	@Override

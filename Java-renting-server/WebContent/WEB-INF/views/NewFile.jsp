@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <form action="Login" method="GET">
+ <form action="loginvalidate" method="GET">
  
  Enter Username:<input type="text" name="uname"  placeholder="username"  required>
  Enter Password:<input type="password" name="pass" placeholder="Enter pass"  required>
